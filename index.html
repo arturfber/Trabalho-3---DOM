@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Trabalho 3 - DOM </title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .picker{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 720px;
+            height: 180px;
+            font-weight: 900;
+        }
+
+        #display{
+            width: 100%;
+            height: 100px;
+            background: #730AA2;
+            transition: background 100ms;
+            margin-top: 30px;
+            border: 1px solid #000;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #display #dados{
+            width: 40%;
+            text-align: center;
+            font-weight: 700;
+            font-size: 30px;
+            background: #FFF;
+            border: none;
+            padding: 0.5%;
+        }
+
+        input{
+            display: block;
+            width: 100%;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="picker">
+        VERMELHO <input type="range" min="0" max="255" step="1" id="vermelho" >
+        VERDE <input type="range" min="0" max="255" step="1" id="verde" >
+        AZUL <input type="range" min="0" max="255" step="1" id="azul">
+
+        <div id="display">
+             <input type="text" id="dados" value="rgb(127, 127, 127)" disabled>
+        </div>
+    </div>
+
+
+    <script>
+
+        document.getElementById('vermelho').addEventListener('input', cor)
+        document.getElementById('verde').addEventListener('input', cor)
+        document.getElementById('azul').addEventListener('input', cor)
+
+
+        function cor(){
+            let vermelho = document.querySelector('#vermelho').value
+            let verde = document.querySelector('#verde').value
+            let azul = document.querySelector('#azul').value
+            
+            let cor = 'rgb('+ vermelho +', '+ verde +', '+ azul +')'
+
+            document.getElementById('dados').value = cor
+
+            let exibir = document.querySelector('#display')
+            exibir.style.background = cor
+
+        }
+
+    </script>
+
+</body>
+</html>
